@@ -10,34 +10,13 @@ import UIKit
 import DHConstraintBuilder
 
 class ViewController: UIViewController {
-
+	// View that holds views for Visually formatted views
+	@IBOutlet weak var visualFormatView: UIView!
+	// View that holds views for DHConstraintBuilder formatted views
+	@IBOutlet weak var dhConstraintView: UIView!
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// Do any additional setup after loading the view, typically from a nib.
-		let green = UIView()
-		green.backgroundColor = .greenColor()
-		
-		let red = UIView()
-		red.backgroundColor = .redColor()
-		
-		let blue = UIView()
-		blue.backgroundColor = .blueColor()
-		
-		view.addConstraints_H(() |-^ green ^-^ red ^-| ())
-		view.addConstraints_H(() |-^ blue ^-| ())
-		
-		view.addConstraints_V(() |-^ green ^-^ blue ^-| ())
-		view.addConstraints_V(() |-^ red ^-^ blue)
 
-//		view.addConstraints_V(() |-^ green ^-| ())
-//		view.addConstraints_V(() |-^ red ^-| ())
-		
-//		view.addConstraint(NSLayoutConstraint(item: green, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: red, attribute: NSLayoutAttribute.Width, multiplier: 1, constant: 0))
-		view.addConstraints_H("\(green)==\(red)")
-		
-		view.addConstraint(NSLayoutConstraint(item: green, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: blue, attribute: NSLayoutAttribute.Height, multiplier: 1, constant: 0))
-		
-		print(view.constraints)
 
 	}
 

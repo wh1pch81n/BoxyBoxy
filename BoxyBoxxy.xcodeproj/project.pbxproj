@@ -12,31 +12,30 @@
 		7F5D4A001D14D57F005DF36C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F5D49FE1D14D57F005DF36C /* Main.storyboard */; };
 		7F5D4A021D14D57F005DF36C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F5D4A011D14D57F005DF36C /* Assets.xcassets */; };
 		7F5D4A051D14D57F005DF36C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F5D4A031D14D57F005DF36C /* LaunchScreen.storyboard */; };
-		7F5D4A151D14D659005DF36C /* DHConstraintBuilder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F5D4A121D14D59D005DF36C /* DHConstraintBuilder.framework */; };
-		7F5D4A161D14D659005DF36C /* DHConstraintBuilder.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7F5D4A121D14D59D005DF36C /* DHConstraintBuilder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DBD0E5701D164E4E0011F927 /* BoxyBoxxyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD0E56F1D164E4E0011F927 /* BoxyBoxxyTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		7F5D4A111D14D59D005DF36C /* PBXContainerItemProxy */ = {
+		DBD0E5641D14E8C00011F927 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 7F5D4A0C1D14D59D005DF36C /* constraintHelper.xcodeproj */;
+			containerPortal = DBD0E55F1D14E8C00011F927 /* constraintHelper.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 2F5FB23D1CC449080045E6DA;
 			remoteInfo = DHConstraintBuilder;
 		};
-		7F5D4A131D14D59D005DF36C /* PBXContainerItemProxy */ = {
+		DBD0E5661D14E8C00011F927 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 7F5D4A0C1D14D59D005DF36C /* constraintHelper.xcodeproj */;
+			containerPortal = DBD0E55F1D14E8C00011F927 /* constraintHelper.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 2F5FB2461CC449080045E6DA;
 			remoteInfo = DHConstraintBuilderTests;
 		};
-		7F5D4A171D14D659005DF36C /* PBXContainerItemProxy */ = {
+		DBD0E5721D164E4E0011F927 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 7F5D4A0C1D14D59D005DF36C /* constraintHelper.xcodeproj */;
+			containerPortal = 7F5D49EF1D14D57F005DF36C /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 2F5FB23C1CC449080045E6DA;
-			remoteInfo = DHConstraintBuilder;
+			remoteGlobalIDString = 7F5D49F61D14D57F005DF36C;
+			remoteInfo = BoxyBoxxy;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -47,7 +46,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				7F5D4A161D14D659005DF36C /* DHConstraintBuilder.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -62,7 +60,10 @@
 		7F5D4A011D14D57F005DF36C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7F5D4A041D14D57F005DF36C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7F5D4A061D14D57F005DF36C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7F5D4A0C1D14D59D005DF36C /* constraintHelper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = constraintHelper.xcodeproj; path = "DHConstraintBuilder-master/constraintHelper.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		DBD0E55F1D14E8C00011F927 /* constraintHelper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = constraintHelper.xcodeproj; path = DHConstraintBuilder/constraintHelper.xcodeproj; sourceTree = "<group>"; };
+		DBD0E56D1D164E4E0011F927 /* BoxyBoxxyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoxyBoxxyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBD0E56F1D164E4E0011F927 /* BoxyBoxxyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxyBoxxyTests.swift; sourceTree = "<group>"; };
+		DBD0E5711D164E4E0011F927 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +71,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F5D4A151D14D659005DF36C /* DHConstraintBuilder.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DBD0E56A1D164E4E0011F927 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,7 +87,9 @@
 		7F5D49EE1D14D57F005DF36C = {
 			isa = PBXGroup;
 			children = (
+				DBD0E55F1D14E8C00011F927 /* constraintHelper.xcodeproj */,
 				7F5D49F91D14D57F005DF36C /* BoxyBoxxy */,
+				DBD0E56E1D164E4E0011F927 /* BoxyBoxxyTests */,
 				7F5D49F81D14D57F005DF36C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -89,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				7F5D49F71D14D57F005DF36C /* BoxyBoxxy.app */,
+				DBD0E56D1D164E4E0011F927 /* BoxyBoxxyTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -96,7 +106,6 @@
 		7F5D49F91D14D57F005DF36C /* BoxyBoxxy */ = {
 			isa = PBXGroup;
 			children = (
-				7F5D4A0C1D14D59D005DF36C /* constraintHelper.xcodeproj */,
 				7F5D49FA1D14D57F005DF36C /* AppDelegate.swift */,
 				7F5D49FC1D14D57F005DF36C /* ViewController.swift */,
 				7F5D49FE1D14D57F005DF36C /* Main.storyboard */,
@@ -107,13 +116,22 @@
 			path = BoxyBoxxy;
 			sourceTree = "<group>";
 		};
-		7F5D4A0D1D14D59D005DF36C /* Products */ = {
+		DBD0E5601D14E8C00011F927 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7F5D4A121D14D59D005DF36C /* DHConstraintBuilder.framework */,
-				7F5D4A141D14D59D005DF36C /* DHConstraintBuilderTests.xctest */,
+				DBD0E5651D14E8C00011F927 /* DHConstraintBuilder.framework */,
+				DBD0E5671D14E8C00011F927 /* DHConstraintBuilderTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		DBD0E56E1D164E4E0011F927 /* BoxyBoxxyTests */ = {
+			isa = PBXGroup;
+			children = (
+				DBD0E56F1D164E4E0011F927 /* BoxyBoxxyTests.swift */,
+				DBD0E5711D164E4E0011F927 /* Info.plist */,
+			);
+			path = BoxyBoxxyTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,12 +149,29 @@
 			buildRules = (
 			);
 			dependencies = (
-				7F5D4A181D14D659005DF36C /* PBXTargetDependency */,
 			);
 			name = BoxyBoxxy;
 			productName = BoxyBoxxy;
 			productReference = 7F5D49F71D14D57F005DF36C /* BoxyBoxxy.app */;
 			productType = "com.apple.product-type.application";
+		};
+		DBD0E56C1D164E4E0011F927 /* BoxyBoxxyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DBD0E5781D164E4E0011F927 /* Build configuration list for PBXNativeTarget "BoxyBoxxyTests" */;
+			buildPhases = (
+				DBD0E5691D164E4E0011F927 /* Sources */,
+				DBD0E56A1D164E4E0011F927 /* Frameworks */,
+				DBD0E56B1D164E4E0011F927 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DBD0E5731D164E4E0011F927 /* PBXTargetDependency */,
+			);
+			name = BoxyBoxxyTests;
+			productName = BoxyBoxxyTests;
+			productReference = DBD0E56D1D164E4E0011F927 /* BoxyBoxxyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -150,6 +185,10 @@
 				TargetAttributes = {
 					7F5D49F61D14D57F005DF36C = {
 						CreatedOnToolsVersion = 7.3.1;
+					};
+					DBD0E56C1D164E4E0011F927 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 7F5D49F61D14D57F005DF36C;
 					};
 				};
 			};
@@ -166,30 +205,31 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 7F5D4A0D1D14D59D005DF36C /* Products */;
-					ProjectRef = 7F5D4A0C1D14D59D005DF36C /* constraintHelper.xcodeproj */;
+					ProductGroup = DBD0E5601D14E8C00011F927 /* Products */;
+					ProjectRef = DBD0E55F1D14E8C00011F927 /* constraintHelper.xcodeproj */;
 				},
 			);
 			projectRoot = "";
 			targets = (
 				7F5D49F61D14D57F005DF36C /* BoxyBoxxy */,
+				DBD0E56C1D164E4E0011F927 /* BoxyBoxxyTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		7F5D4A121D14D59D005DF36C /* DHConstraintBuilder.framework */ = {
+		DBD0E5651D14E8C00011F927 /* DHConstraintBuilder.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = DHConstraintBuilder.framework;
-			remoteRef = 7F5D4A111D14D59D005DF36C /* PBXContainerItemProxy */;
+			remoteRef = DBD0E5641D14E8C00011F927 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		7F5D4A141D14D59D005DF36C /* DHConstraintBuilderTests.xctest */ = {
+		DBD0E5671D14E8C00011F927 /* DHConstraintBuilderTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = DHConstraintBuilderTests.xctest;
-			remoteRef = 7F5D4A131D14D59D005DF36C /* PBXContainerItemProxy */;
+			remoteRef = DBD0E5661D14E8C00011F927 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -205,6 +245,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DBD0E56B1D164E4E0011F927 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -217,13 +264,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DBD0E5691D164E4E0011F927 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DBD0E5701D164E4E0011F927 /* BoxyBoxxyTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		7F5D4A181D14D659005DF36C /* PBXTargetDependency */ = {
+		DBD0E5731D164E4E0011F927 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = DHConstraintBuilder;
-			targetProxy = 7F5D4A171D14D659005DF36C /* PBXContainerItemProxy */;
+			target = 7F5D49F61D14D57F005DF36C /* BoxyBoxxy */;
+			targetProxy = DBD0E5721D164E4E0011F927 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -356,6 +411,30 @@
 			};
 			name = Release;
 		};
+		DBD0E5741D164E4E0011F927 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = BoxyBoxxyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = WebMD.BoxyBoxxyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BoxyBoxxy.app/BoxyBoxxy";
+			};
+			name = Debug;
+		};
+		DBD0E5751D164E4E0011F927 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = BoxyBoxxyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = WebMD.BoxyBoxxyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BoxyBoxxy.app/BoxyBoxxy";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -373,6 +452,15 @@
 			buildConfigurations = (
 				7F5D4A0A1D14D57F005DF36C /* Debug */,
 				7F5D4A0B1D14D57F005DF36C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DBD0E5781D164E4E0011F927 /* Build configuration list for PBXNativeTarget "BoxyBoxxyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DBD0E5741D164E4E0011F927 /* Debug */,
+				DBD0E5751D164E4E0011F927 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
