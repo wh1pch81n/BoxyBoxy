@@ -156,7 +156,7 @@ class BoxyBoxxyTests: XCTestCase {
 		greenView_vf.heightAnchor.constraintEqualToAnchor(blueView_vf.heightAnchor).active = true
 		
 		// DHConstraintBuilder
-		view_cb.addConstraints(.H, () |-^ greenView_cb ^-^ 15.5 ^-^ redView_cb ^-| ())
+		view_cb.addConstraints(.H, () |-^ greenView_cb ^-^ 50 ^-^ redView_cb ^-| ())
 		view_cb.addConstraints(.H, () |-^ blueView_cb ^-| ())
 		
 		view_cb.addConstraints(.V, () |-^ greenView_cb ^-^ blueView_cb ^-| ())
