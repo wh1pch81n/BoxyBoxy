@@ -298,18 +298,30 @@ class BoxyBoxxyTests: XCTestCase {
 		assertEqualRect(redView_vf, redView_cb)
 	}
 	
-	/*
 	/**
 	Priority
 	[button(100@20)]
 	*/
 	func testPriority() {
-		view.addConstraints(.H, () |-^ button)
-		view.addConstraints(.H, DHConstraintBuilder(redView, length: 100, priority: 20))
-		view.addConstraints(.V, () |-^ 40 ^-^ button)
+		// Visual Format
+		let viewDict = ["button" : button_vf]
+		Array(viewDict.values).forEach {
+			$0.translatesAutoresizingMaskIntoConstraints = false
+			self.view_vf.addSubview($0)
+		}
+		view_vf.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[button(100@20)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
+		view_vf.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-[button(100@20)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
+		
+		// DHConstraintBuilder
+		view_cb.addConstraints(.H, () |-^ DHConstraintBuilder(button_cb, length: 100, priority: 20))
+		view_cb.addConstraints(.V, () |-^ DHConstraintBuilder(button_cb, length: 100, priority: 20))
+		
+		// Test
+		view_vf.layoutSubviews()
+		view_cb.layoutSubviews()
+		assertEqualRect(button_vf, button_cb)
 	}
 
-	*/
 	/**
 	Equal Widths
 	[button1(==button2)]
@@ -356,7 +368,31 @@ class BoxyBoxxyTests: XCTestCase {
 	}
 //	Multiple Predicates
 //	[flexibleButton(>=70,<=100)]
-//
+
+	func testMultiplePredicates() {
+		// Visual Format
+		let viewDict = ["button" : button_vf]
+		Array(viewDict.values).forEach {
+			$0.translatesAutoresizingMaskIntoConstraints = false
+			self.view_vf.addSubview($0)
+		}
+		view_vf.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[button(>=70,<=100)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
+		view_vf.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-[button(>=70,<=100)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
+		
+		// DHConstraintBuilder
+		view_cb.addConstraints(.H, () |-^ DHConstraintBuilder(button_cb, multipleLengths: [
+			(.GreaterThanOrEqual, 70), (.LessThanOrEqual, 100)
+			]))
+		view_cb.addConstraints(.V, () |-^ DHConstraintBuilder(button_cb, multipleLengths: [
+			(.GreaterThanOrEqual, 70), (.LessThanOrEqual, 100)
+			]))
+		
+		// Test
+		view_vf.layoutSubviews()
+		view_cb.layoutSubviews()
+		assertEqualRect(button_vf, button_cb)
+	}
+	
 //	A Complete Line of Layout
 //	|-[find]-[findNext]-[findField(>=20)]-|
 }

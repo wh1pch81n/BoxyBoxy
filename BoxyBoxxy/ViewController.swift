@@ -19,12 +19,5 @@ class ViewController: UIViewController {
 
 		// MARK: SEE BoxyBoxxyTests for DHConstraintBuilder Usage examples
 	}
-
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
-	}
-
-
 }
 
