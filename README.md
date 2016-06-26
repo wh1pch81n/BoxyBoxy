@@ -12,7 +12,7 @@ DHConstraintBuilder is meant to simplify the experience of adding auto-layout co
 
 You can make constraints like this one:
 
-![alt text][../ViewExample.png]
+![alt text](ViewExample.png)
 
 Using code like this:
 ```swift
