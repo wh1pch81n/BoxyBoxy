@@ -1,14 +1,39 @@
-//
-//  BoxyBoxxyTests.swift
-//  BoxyBoxxyTests
-//
-//  Created by Ho, Derrick on 6/18/16.
-//  Copyright © 2016 Derrick Ho. All rights reserved.
-//
+
+
+/**
+This Test Compares constraintsWithVisualFormat:options:metrics:views: with DHConstraintBuilder.
+
+Test Cases were derived from this Apple Document:
+https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/AutolayoutPG/VisualFormatLanguage.html#//apple_ref/doc/uid/TP40010853-CH27-SW1
+*/
+
+/**
+MIT License
+
+Copyright (c) 2016 Derrick Ho
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
 
 import XCTest
-import DHConstraintBuilder
 
+@testable import DHConstraintBuilder
 @testable import BoxyBoxxy
 
 func assertEqualRect(_ view: UIView, _ view2:UIView) {
@@ -93,14 +118,14 @@ class BoxyBoxxyTests: XCTestCase {
 	var view_cb: UIView { return mainViewController.dhConstraintView }
 
     override func setUp() {
-        super.setUp()
+		super.setUp()
+	
         // Put setup code here. This method is called before the invocation of each test method in the class.
 		wait(forSeconds: 0.5)
     }
     
     override func tearDown() {
 		wait(forSeconds: 3)
-
 		resetViews()
 		
         // Put teardown code here. This method is called after the invocation of each test method in the class.
@@ -156,7 +181,7 @@ class BoxyBoxxyTests: XCTestCase {
 		greenView_vf.heightAnchor.constraintEqualToAnchor(blueView_vf.heightAnchor).active = true
 		
 		// DHConstraintBuilder
-		view_cb.addConstraints(.H, () |-^ greenView_cb ^-^ 50 ^-^ redView_cb ^-| ())
+		view_cb.addConstraints(.H, () |-^ greenView_cb ^-^ 15.5 ^-^ redView_cb ^-| ())
 		view_cb.addConstraints(.H, () |-^ blueView_cb ^-| ())
 		
 		view_cb.addConstraints(.V, () |-^ greenView_cb ^-^ blueView_cb ^-| ())
@@ -166,6 +191,8 @@ class BoxyBoxxyTests: XCTestCase {
 		view_cb.addConstraints(.V, DHConstraintBuilder(greenView_cb, lengthRelativeToView: blueView_cb))
 		
 		// Test
+		view_vf.layoutSubviews()
+		view_cb.layoutSubviews()
 		assertEqualRect(redView_vf, redView_cb)
 		assertEqualRect(greenView_vf, greenView_cb)
 		assertEqualRect(blueView_vf, blueView_cb)

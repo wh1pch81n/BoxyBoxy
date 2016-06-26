@@ -14,10 +14,14 @@ class ViewController: UIViewController {
 	@IBOutlet weak var visualFormatView: UIView!
 	// View that holds views for DHConstraintBuilder formatted views
 	@IBOutlet weak var dhConstraintView: UIView!
-	override func viewDidLoad() {
-		super.viewDidLoad()
+	var isTesting = NSBundle(identifier: "WebMD.BoxyBoxxyTests") != nil
 
-		// MARK: SEE BoxyBoxxyTests for DHConstraintBuilder Usage examples
+	override func viewDidAppear(animated: Bool) {
+		super.viewDidAppear(animated)
+		if isTesting == false {
+			let alert = UIAlertController(title: "See BoxyBoxxyTests for DHConstraintBuilder Usage examples", message: nil, preferredStyle: .Alert)
+			self.presentViewController(alert, animated: true, completion: nil)
+		}
 	}
 }
 
