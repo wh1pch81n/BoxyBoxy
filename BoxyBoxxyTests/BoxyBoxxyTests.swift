@@ -212,8 +212,8 @@ class BoxyBoxxyTests: XCTestCase {
 		
 	// dhconstraints
 		view_cb.addConstraints(.H, () |-^ button_cb ^-^ 8 ^-^ redView_cb ^-| ())
-		view_cb.addConstraints(.V, DHConstraintBuilder(button_cb, length: 30) ^-| ())
-		view_cb.addConstraints(.V, DHConstraintBuilder(redView_cb, length: 30) ^-| ())
+		view_cb.addConstraints(.V, DHConstraintBuilder(button_cb, .Equal1(to: 30)) ^-| ())
+		view_cb.addConstraints(.V, DHConstraintBuilder(redView_cb, .Equal1(to: 30)) ^-| ())
 		
 		
 		view_vf.layoutSubviews()
@@ -234,7 +234,7 @@ class BoxyBoxxyTests: XCTestCase {
 		view_vf.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[button]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
 		
 		// DHConstraintBuilder
-		view_cb.addConstraints(.H, DHConstraintBuilder(button_cb, .GreaterThanOrEqual, length: 50) ^-| ())
+		view_cb.addConstraints(.H, DHConstraintBuilder(button_cb, .GreaterThanOrEqual1(to: 50)) ^-| ())
 		view_cb.addConstraints(.V, button_cb ^-| ())
 		
 		//Test
@@ -284,9 +284,9 @@ class BoxyBoxxyTests: XCTestCase {
 		view_cb.addConstraints(.H, () |-^ 0 ^-^ greenView_cb ^-^ 0 ^-| ())
 		view_cb.addConstraints(.H, () |-^ 0 ^-^ redView_cb ^-^ 0 ^-| ())
 		view_cb.addConstraints(.V, () |-^
-			DHConstraintBuilder(greenView_cb, length: 30) ^-^
+			DHConstraintBuilder(greenView_cb, .Equal1(to: 30)) ^-^
 			10 ^-^
-			DHConstraintBuilder(redView_cb, length: 30))
+			DHConstraintBuilder(redView_cb, .Equal1(to: 30)))
 		
 		// Test
 		view_vf.layoutSubviews()
@@ -314,9 +314,9 @@ class BoxyBoxxyTests: XCTestCase {
 		// DHConstraintBuilder
 		view_cb.addConstraints(.H, () |-^ 0 ^-^ redView_cb ^-^ 0 ^-^ blueView_cb ^-^ 0 ^-| ())
 		view_cb.addConstraints(.V, () |-^
-			DHConstraintBuilder(redView_cb, length: 30))
+			DHConstraintBuilder(redView_cb, .Equal1(to: 30)))
 		view_cb.addConstraints(.V, () |-^
-				DHConstraintBuilder(blueView_cb, length: 30))
+				DHConstraintBuilder(blueView_cb, .Equal1(to: 30)))
 		view_cb.addConstraints(.H, DHConstraintBuilder(redView_cb, .Equal, lengthRelativeToView: blueView_cb))
 		// Test
 		view_vf.layoutSubviews()
@@ -340,8 +340,8 @@ class BoxyBoxxyTests: XCTestCase {
 		view_vf.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-[button(100@20)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
 		
 		// DHConstraintBuilder
-		view_cb.addConstraints(.H, () |-^ DHConstraintBuilder(button_cb, length: 100, priority: 20))
-		view_cb.addConstraints(.V, () |-^ DHConstraintBuilder(button_cb, length: 100, priority: 20))
+		view_cb.addConstraints(.H, () |-^ DHConstraintBuilder(button_cb, .Equal2(to: 100, priority: 20)))
+		view_cb.addConstraints(.V, () |-^ DHConstraintBuilder(button_cb, .Equal2(to: 100, priority: 20)))
 		
 		// Test
 		view_vf.layoutSubviews()
@@ -384,7 +384,7 @@ class BoxyBoxxyTests: XCTestCase {
 	
 		view_cb.addConstraints(.V, () |-^ 100 ^-^ button_cb)
 	
-		view_cb.addConstraints(.V, DHConstraintBuilder(blueView_cb, length: 10))
+		view_cb.addConstraints(.V, DHConstraintBuilder(blueView_cb, .Equal1(to: 10)))
 	
 		// Test
 		view_vf.layoutSubviews()
@@ -407,12 +407,8 @@ class BoxyBoxxyTests: XCTestCase {
 		view_vf.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-[button(>=70,<=100)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
 		
 		// DHConstraintBuilder
-		view_cb.addConstraints(.H, () |-^ DHConstraintBuilder(button_cb, multipleLengths: [
-			(.GreaterThanOrEqual, 70), (.LessThanOrEqual, 100)
-			]))
-		view_cb.addConstraints(.V, () |-^ DHConstraintBuilder(button_cb, multipleLengths: [
-			(.GreaterThanOrEqual, 70), (.LessThanOrEqual, 100)
-			]))
+		view_cb.addConstraints(.H, () |-^ DHConstraintBuilder(button_cb, .GreaterThanOrEqual1(to: 70), .LessThanOrEqual1(to: 100)))
+		view_cb.addConstraints(.V, () |-^ DHConstraintBuilder(button_cb, .GreaterThanOrEqual1(to: 70), .LessThanOrEqual1(to: 100)))
 		
 		// Test
 		view_vf.layoutSubviews()
