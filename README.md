@@ -51,6 +51,9 @@ view_vf.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-[redV
 greenView_vf.widthAnchor.constraintEqualToAnchor(redView_vf.widthAnchor).active = true
 greenView_vf.heightAnchor.constraintEqualToAnchor(blueView_vf.heightAnchor).active = true
 ```
+# Need More Examples?
+
+There are more Examples in [BoxyBoxxyTests.swift](BoxyBoxxyTests/BoxyBoxxyTests.swift) where there is a more comprehensive side by side comparison of `NSLayoutConstraint.constraintsWithVisualFormat` and `DHConstraintBuilder`
 
 # Installation of DHConstraintBuilder
 `carthage github "wh1pch81n/DHConstraintBuilder"`
