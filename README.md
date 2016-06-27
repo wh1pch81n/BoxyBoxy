@@ -26,7 +26,7 @@ view_cb.addConstraints(.H, DHConstraintBuilder(greenView_cb, lengthRelativeToVie
 view_cb.addConstraints(.V, DHConstraintBuilder(greenView_cb, lengthRelativeToView: blueView_cb))
 ```
 
-The eqivalent using NSLayoutConstraint.constraintsWithVisualFormat(_ :options:metrics:views) would look like this:
+The equivalent using NSLayoutConstraint.constraintsWithVisualFormat(_ :options:metrics:views) would look like this:
 
 ```
 let viewArray = [
