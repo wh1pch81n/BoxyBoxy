@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "5AB38C348B2E93DAF61ABADA950FC4F93579698F",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "C1F7E560365ECCA2C99492E4EE8F65BD1A709C66" : 9223372036854775807,
+    "5AB38C348B2E93DAF61ABADA950FC4F93579698F" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "25EA4971-2F72-401C-AB0D-AFF492857C05",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "C1F7E560365ECCA2C99492E4EE8F65BD1A709C66" : "BoxyBoxy\/DHConstraintBuilder\/",
+    "5AB38C348B2E93DAF61ABADA950FC4F93579698F" : "BoxyBoxy\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "BoxyBoxxy",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "BoxyBoxxy.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/wh1pch81n\/BoxyBoxy.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "5AB38C348B2E93DAF61ABADA950FC4F93579698F"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/www.github.com\/wh1pch81n\/DHConstraintBuilder.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C1F7E560365ECCA2C99492E4EE8F65BD1A709C66"
+    }
+  ]
+}

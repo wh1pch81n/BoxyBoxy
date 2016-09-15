@@ -46,12 +46,12 @@ func assertEqualRect(_ view: UIView, _ view2:UIView) {
 }
 
 extension XCTestCase {
-	func wait(forSeconds seconds: NSTimeInterval = 1.0) {
-		let exp = expectationWithDescription("")
-		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(Int64(NSEC_PER_SEC) * Int64(seconds))), dispatch_get_main_queue(), {
+	func wait(forSeconds seconds: TimeInterval = 1.0) {
+		let exp = expectation(description: "")
+		DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(Int64(NSEC_PER_SEC) * Int64(seconds))) / Double(NSEC_PER_SEC), execute: {
 			exp.fulfill()
 		})
-		waitForExpectationsWithTimeout(seconds * 2.0, handler: nil)
+		waitForExpectations(timeout: seconds * 2.0, handler: nil)
 	}
 }
 
@@ -59,9 +59,9 @@ class BoxyBoxxyTests: XCTestCase {
 	
 	lazy var button_vf: UIButton = {
 		let v = UIButton()
-		v.setTitle("Button", forState: UIControlState.Normal)
-		v.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-		v.layer.borderColor = UIColor.blackColor().CGColor
+		v.setTitle("Button", for: UIControlState())
+		v.setTitleColor(UIColor.black, for: UIControlState())
+		v.layer.borderColor = UIColor.black.cgColor
 		v.layer.borderWidth = 2
 		v.layer.cornerRadius = 5
 		return v
@@ -69,9 +69,9 @@ class BoxyBoxxyTests: XCTestCase {
 
 	lazy var button_cb: UIButton = {
 		let v = UIButton()
-		v.setTitle("Button", forState: UIControlState.Normal)
-		v.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-		v.layer.borderColor = UIColor.blackColor().CGColor
+		v.setTitle("Button", for: UIControlState())
+		v.setTitleColor(UIColor.black, for: UIControlState())
+		v.layer.borderColor = UIColor.black.cgColor
 		v.layer.borderWidth = 2
 		v.layer.cornerRadius = 5
 		return v
@@ -79,41 +79,41 @@ class BoxyBoxxyTests: XCTestCase {
 	
 	lazy var greenView_vf: UIView = {
 		let v = UIView()
-		v.backgroundColor = .greenColor()
+		v.backgroundColor = .green
 		return v
 	}()
 	
 	lazy var greenView_cb: UIView = {
 		let v = UIView()
-		v.backgroundColor = .greenColor()
+		v.backgroundColor = .green
 		return v
 	}()
 	
 	lazy var redView_vf: UIView = {
 		let v = UIView()
-		v.backgroundColor = .redColor()
+		v.backgroundColor = .red
 		return v
 	}()
 	
 	lazy var redView_cb: UIView = {
 		let v = UIView()
-		v.backgroundColor = .redColor()
+		v.backgroundColor = .red
 		return v
 	}()
 	
 	lazy var blueView_vf: UIView = {
 		let v = UIView()
-		v.backgroundColor = .blueColor()
+		v.backgroundColor = .blue
 		return v
 	}()
 	
 	lazy var blueView_cb: UIView = {
 		let v = UIView()
-		v.backgroundColor = .blueColor()
+		v.backgroundColor = .blue
 		return v
 	}()
 	
-	var mainViewController: ViewController = UIApplication.sharedApplication().keyWindow!.rootViewController! as! ViewController
+	var mainViewController: ViewController = UIApplication.shared.keyWindow!.rootViewController! as! ViewController
 	var view_vf: UIView { return mainViewController.visualFormatView }
 	var view_cb: UIView { return mainViewController.dhConstraintView }
 
@@ -170,15 +170,15 @@ class BoxyBoxxyTests: XCTestCase {
 			"redView" : redView_vf,
 			"blueView" : blueView_vf
 		]
-		view_vf.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[greenView]-15.5-[redView]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
-		view_vf.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[blueView]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
+		view_vf.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[greenView]-15.5-[redView]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
+		view_vf.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[blueView]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
 		
-		view_vf.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-[greenView]-[blueView]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
+		view_vf.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[greenView]-[blueView]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
 		
-		view_vf.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-[redView]-[blueView]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
+		view_vf.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[redView]-[blueView]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
 		
-		greenView_vf.widthAnchor.constraintEqualToAnchor(redView_vf.widthAnchor).active = true
-		greenView_vf.heightAnchor.constraintEqualToAnchor(blueView_vf.heightAnchor).active = true
+		greenView_vf.widthAnchor.constraint(equalTo: redView_vf.widthAnchor).isActive = true
+		greenView_vf.heightAnchor.constraint(equalTo: blueView_vf.heightAnchor).isActive = true
 		
 		// DHConstraintBuilder
 		view_cb.addConstraints(.H, () |-^ greenView_cb ^-^ 15.5 ^-^ redView_cb ^-| ())
@@ -206,9 +206,9 @@ class BoxyBoxxyTests: XCTestCase {
 		viewArray.forEach(view_vf.addSubview)
 		viewArray.forEach({ $0.translatesAutoresizingMaskIntoConstraints = false })
 		let viewDict = ["button" : button_vf, "redView" : redView_vf]
-		view_vf.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[button]-[redView]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
-		view_vf.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[button(30)]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
-		view_vf.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[redView(30)]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
+		view_vf.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[button]-[redView]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
+		view_vf.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[button(30)]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
+		view_vf.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[redView(30)]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
 		
 	// dhconstraints
 		view_cb.addConstraints(.H, () |-^ button_cb ^-^ 8 ^-^ redView_cb ^-| ())
@@ -230,8 +230,8 @@ class BoxyBoxxyTests: XCTestCase {
 		button_vf.translatesAutoresizingMaskIntoConstraints = false
 		view_vf.addSubview(button_vf)
 		let viewDict = ["button" : button_vf]
-		view_vf.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:[button(>=50)]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
-		view_vf.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[button]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
+		view_vf.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[button(>=50)]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
+		view_vf.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[button]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
 		
 		// DHConstraintBuilder
 		view_cb.addConstraints(.H, DHConstraintBuilder(button_cb, .GreaterThanOrEqual1(to: 50)) ^-| ())
@@ -252,8 +252,8 @@ class BoxyBoxxyTests: XCTestCase {
 		blueView_vf.translatesAutoresizingMaskIntoConstraints = false
 		view_vf.addSubview(blueView_vf)
 		let viewDict = ["blueView" : blueView_vf]
-		view_vf.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-50-[blueView]-50-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
-		view_vf.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-[blueView]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
+		view_vf.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-50-[blueView]-50-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
+		view_vf.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[blueView]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
 		
 		// DHConstraintBuilder
 		view_cb.addConstraints(.H, () |-^ 50 ^-^ blueView_cb ^-^ 50 ^-| ())
@@ -276,9 +276,9 @@ class BoxyBoxxyTests: XCTestCase {
 			$0.translatesAutoresizingMaskIntoConstraints = false
 			self.view_vf.addSubview($0)
 		}
-		view_vf.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[greenView]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
-		view_vf.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[redView]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
-		view_vf.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-[greenView(30)]-10-[redView(30)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
+		view_vf.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[greenView]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
+		view_vf.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[redView]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
+		view_vf.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[greenView(30)]-10-[redView(30)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
 		
 		// DHConstraintBuilder
 		view_cb.addConstraints(.H, () |-^ 0 ^-^ greenView_cb ^-^ 0 ^-| ())
@@ -306,10 +306,10 @@ class BoxyBoxxyTests: XCTestCase {
 			$0.translatesAutoresizingMaskIntoConstraints = false
 			self.view_vf.addSubview($0)
 		}
-		view_vf.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[redView]-0-[blueView]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
-		view_vf.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-[redView(30)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
-		view_vf.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-[blueView(30)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
-		redView_vf.widthAnchor.constraintEqualToAnchor(blueView_vf.widthAnchor).active = true
+		view_vf.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[redView]-0-[blueView]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
+		view_vf.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[redView(30)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
+		view_vf.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[blueView(30)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
+		redView_vf.widthAnchor.constraint(equalTo: blueView_vf.widthAnchor).isActive = true
 		
 		// DHConstraintBuilder
 		view_cb.addConstraints(.H, () |-^ 0 ^-^ redView_cb ^-^ 0 ^-^ blueView_cb ^-^ 0 ^-| ())
@@ -336,8 +336,8 @@ class BoxyBoxxyTests: XCTestCase {
 			$0.translatesAutoresizingMaskIntoConstraints = false
 			self.view_vf.addSubview($0)
 		}
-		view_vf.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[button(100@20)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
-		view_vf.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-[button(100@20)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
+		view_vf.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[button(100@20)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
+		view_vf.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[button(100@20)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
 		
 		// DHConstraintBuilder
 		view_cb.addConstraints(.H, () |-^ DHConstraintBuilder(button_cb, .Equal2(to: 100, priority: 20)))
@@ -366,13 +366,13 @@ class BoxyBoxxyTests: XCTestCase {
 			"blueView" : blueView_vf
 		]
 	
-		view_vf.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[button]-0-[blueView]-0-|", options: NSLayoutFormatOptions.AlignAllCenterY, metrics: nil, views: viewDict))
+		view_vf.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[button]-0-[blueView]-0-|", options: NSLayoutFormatOptions.alignAllCenterY, metrics: nil, views: viewDict))
 	
-		view_vf.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:[button(==blueView)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
+		view_vf.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[button(==blueView)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
 	
-		view_vf.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-100-[button]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
+		view_vf.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-100-[button]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
 	
-		view_vf.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[blueView(10)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
+		view_vf.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[blueView(10)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
 	
 	
 	// DHConstraints
@@ -403,8 +403,8 @@ class BoxyBoxxyTests: XCTestCase {
 			$0.translatesAutoresizingMaskIntoConstraints = false
 			self.view_vf.addSubview($0)
 		}
-		view_vf.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[button(>=70,<=100)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
-		view_vf.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-[button(>=70,<=100)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
+		view_vf.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[button(>=70,<=100)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
+		view_vf.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[button(>=70,<=100)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
 		
 		// DHConstraintBuilder
 		view_cb.addConstraints(.H, () |-^ DHConstraintBuilder(button_cb, .GreaterThanOrEqual1(to: 70), .LessThanOrEqual1(to: 100)))
