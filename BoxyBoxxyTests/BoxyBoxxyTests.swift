@@ -338,8 +338,8 @@ class BoxyBoxxyTests: XCTestCase {
 		view_vf.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[button(100@20)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
 		
 		// DHConstraintBuilder
-		view_cb.addConstraints(() |-^ DHConstraintBuilder(button_cb, .equal2(to: 100, priority: 20)))(.H)
-		view_cb.addConstraints(() |-^ DHConstraintBuilder(button_cb, .equal2(to: 100, priority: 20)))(.V)
+		view_cb.addConstraints(() |-^ button_cb.gapLengthEqual(to: 100, priority: 20))(.H)
+		view_cb.addConstraints(() |-^ button_cb.gapLengthEqual(to: 100, priority: 20))(.V)
 		
 		// Test
 		view_vf.layoutSubviews()
